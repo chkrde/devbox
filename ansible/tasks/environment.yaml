@@ -5,20 +5,39 @@
     pkg:
     - zsh
     - zsh-syntax-highlighting
+    - fonts-powerline
   tags: env
  
 # oh-my-zsh
-- name: Check oh-my-zsh
-  stat:
-    path: ~/.oh-my-zsh
-  register: ohmy
-  become_user: "{{ user }}"
-  tags: env
-- name: Install oh-my-zsh
-  shell: CHSH=no RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  when: ohmy.stat.exists == False
-  become_user: "{{ user }}"
-  tags: env
+# - name: Check oh-my-zsh
+#   stat:
+#     path: ~/.oh-my-zsh
+#   register: ohmy
+#   become_user: "{{ user }}"
+#   tags: env
+# - name: Install oh-my-zsh
+#   shell: CHSH=no RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#   when: ohmy.stat.exists == False
+#   become_user: "{{ user }}"
+#   tags: env
+
+# TODO Further test https://github.com/sorin-ionescu/prezto
+
 - name: Switch shell
-  shell: /usr/bin/chsh -s $(which zsh)
-  become_user: "{{ user }}"
+  shell: /usr/bin/chsh -s $(which zsh) {{ user }}
+  tags: env
+
+# i3 + i3-gaps
+- name: Add ppa for i3-gaps
+  apt_repository:
+    repo: ppa:kgilmer/speed-ricer
+  tags: env
+- name: Install i3 packages
+  apt:
+    pkg:
+    - i3-gaps
+    - i3blocks
+    - i3lock
+    - i3status
+    - xfce4-terminal
+  tags: env
