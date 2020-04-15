@@ -1,0 +1,26 @@
+- name: Install aptitude
+  apt:
+    name: aptitude
+
+- name: Disable swap
+  replace:
+    path: /etc/fstab
+    regexp: '^(\w.+?\sswap\s+\w+\s+.*)$'
+    replace: '# \1'
+
+- name: Check if running as vm
+  shell: /usr/bin/dmesg | grep -q 'Hypervisor'
+  register: check_hypervisor
+  failed_when: check_hypervisor.rc > 1
+  changed_when: false
+ 
+# TODO Check which Hypervisor when not using virtualbox (facter/dmidecode)
+- name: Install virtualbox guest additions
+  apt:
+    pkg: 
+    - virtualbox-guest-utils
+    - virtualbox-guest-x11
+    - virtualbox-guest-dkms
+  when:
+    - check_hypervisor.rc == 0
+

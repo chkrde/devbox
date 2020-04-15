@@ -1,0 +1,24 @@
+---
+
+- name: Install packages
+  apt:
+    pkg:
+    - zsh
+    - zsh-syntax-highlighting
+  tags: env
+ 
+# oh-my-zsh
+- name: Check oh-my-zsh
+  stat:
+    path: ~/.oh-my-zsh
+  register: ohmy
+  become_user: "{{ user }}"
+  tags: env
+- name: Install oh-my-zsh
+  shell: CHSH=no RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  when: ohmy.stat.exists == False
+  become_user: "{{ user }}"
+  tags: env
+- name: Switch shell
+  shell: /usr/bin/chsh -s $(which zsh)
+  become_user: "{{ user }}"

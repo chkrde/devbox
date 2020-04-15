@@ -1,0 +1,9 @@
+---
+
+- hosts: localhost
+  connection: local
+  run_once: true
+  become: true
+  tasks:
+  - import_role:
+      name: ansible
