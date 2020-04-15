@@ -261,9 +261,7 @@ mode "$mode_gaps_outer" {
 
 for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
 
-exec --no-startup-id /usr/bin/copyq 
-#exec chromium-browser
-exec gnome-settings-daemon
-exec --no-startup-id /usr/bin/clipit
-exec VBoxClient-all
+# exec --no-startup-id /usr/bin/copyq 
+# exec gnome-settings-daemon
+# exec --no-startup-id /usr/bin/clipit
 
