@@ -1,6 +1,4 @@
 ---
 
 - import_tasks: system.yaml
-- import_tasks: packages.yaml
-- import_tasks: environment.yaml
-
+- import_tasks: env.yaml
