@@ -25,4 +25,3 @@
     - virtualbox-guest-dkms
   when:
     - check_hypervisor.rc == 0
-
