@@ -1,3 +1,5 @@
 user: chkrde
 go:
   version: 1.14.2
+terraform:
+  version: 0.12.24
