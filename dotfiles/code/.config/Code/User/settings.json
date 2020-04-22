@@ -1,0 +1,14 @@
+{
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Default Light+",
+  "window.titleBarStyle": "custom",
+  "workbench.iconTheme": "vscode-icons",
+  "files.associations": {
+    "*.yaml": "yaml"
+  },
+  "ansible.autocompletion": false,
+  "ansible.hover": false,
+  "ansible.validation": false,
+  "json.format.enable": false,
+  "yaml.completion": false
+}
