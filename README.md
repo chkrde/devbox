@@ -13,7 +13,8 @@ sudo apt-get install -y ansible
 
 ```bash
 sudo visudo
-# chkrde ALL = NOPASSWD: ALL
+# Add after groups
+# chkrde	ALL=(ALL:ALL) NOPASSWD: ALL
 ```
 
 ```bash
