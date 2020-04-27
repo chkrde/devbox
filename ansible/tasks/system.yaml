@@ -3,6 +3,7 @@
 - name: Install aptitude
   apt:
     name: aptitude
+  when: ansible_distribution == "Ubuntu"
 
 - name: Disable swap
   replace:
@@ -24,4 +25,4 @@
     - virtualbox-guest-x11
     - virtualbox-guest-dkms
   when:
-    - check_hypervisor.rc == 0
+    - ansible_distribution == "Ubuntu" and check_hypervisor.rc == 0

@@ -10,5 +10,7 @@
   "ansible.hover": false,
   "ansible.validation": false,
   "json.format.enable": false,
-  "yaml.completion": false
+  "yaml.completion": false,
+  "git.autofetch": true,
+  "go.toolsGopath": "/home/chkrde/code/gopath"
 }
