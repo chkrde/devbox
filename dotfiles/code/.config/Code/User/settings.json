@@ -12,5 +12,7 @@
   "json.format.enable": false,
   "yaml.completion": false,
   "git.autofetch": true,
-  "go.toolsGopath": "/home/chkrde/code/gopath"
+  "go.toolsGopath": "/home/chkrde/code/gopath",
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true
 }

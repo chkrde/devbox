@@ -1,7 +1,9 @@
 # Setup devbox
 
 ```bash
-mkdir -p code/src/github.com/chkrde/devbox
+mkdir -p code/src/github.com/chkrde
+cd ~/code/src/github.com/chkrde
+git clone https://github.com/chkrde/devbox
 ```
 
 ```bash
@@ -14,7 +16,7 @@ sudo apt-get install -y ansible
 ```bash
 sudo visudo
 # Add after groups
-# chkrde	ALL=(ALL:ALL) NOPASSWD: ALL
+chkrde	ALL=(ALL:ALL) NOPASSWD: ALL
 ```
 
 ```bash
