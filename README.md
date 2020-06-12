@@ -23,3 +23,9 @@ chkrde	ALL=(ALL:ALL) NOPASSWD: ALL
 ansible-playbook devbox.yaml
 # ansible-playbook -K --tags "env"  devbox.yaml
 ```
+
+## Todo
+
+- get rid of snapd
+- merge firefox/user.js with github.com/pyllyukko/user.js/tree/relaxed
+- copy/link firefox/user.js to profile folder

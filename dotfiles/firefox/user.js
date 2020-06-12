@@ -17,11 +17,11 @@ user_pref("browser.search.suggest.enabled", false);
 user_pref("browser.search.region", "DE");
 
 // Undo closed windows
-user_pref("browser.sessionstore.max_windows_undo", "10");
+user_pref("browser.sessionstore.max_windows_undo", 10);
 
 // Blank startup page
 user_pref("browser.startup.homepage", "	about:blank");
-user_pref("browser.startup.page", "3");
+user_pref("browser.startup.page", 3);
 
 // Tab settings
 user_pref("browser.tabs.extraDragSpace", true);
