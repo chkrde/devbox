@@ -44,5 +44,5 @@ git merge upstream/master
 
 - get rid of snapd
 - add ansible `update` tag for updating packages/files to new releases/commits
-- merge firefox/user.js with github.com/pyllyukko/user.js/tree/relaxed
+- merge firefox/user.js with <https://github.com/pyllyukko/user.js/tree/relaxed> or <https://github.com/ghacksuserjs/ghacks-user.js>
 - copy/link firefox/user.js to profile folder
