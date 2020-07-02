@@ -34,3 +34,6 @@ user_pref("datareporting.healthreport.uploadEnabled", false);
 
 // Dont use ff password manager
 user_pref("signon.rememberSignons", false);
+
+// Disable activity stream
+user_pref("browser.library.activity-stream.enabled", false);
