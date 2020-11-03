@@ -1,1 +1,3 @@
 accels.scm
+dotfiles/config/Code
+!dotfiles/config/Code/User/settings.json

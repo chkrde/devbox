@@ -1,0 +1,33 @@
+command=~/.config/i3blocks/blocks/$BLOCK_NAME/$BLOCK_NAME
+separator_block_width=30
+markup=pango
+
+[disk]
+LABEL=<span color="#EE37B8">  </span>
+DIR=/
+#ALERT_LOW=10
+interval=30
+
+#[cpu_util_detailed]
+#label=<span color="#FFFF33">  </span>
+#markup=pango
+#interval=-2
+
+[load_average]
+label=<span color="#FFFF33">  </span>
+command=uptime | sed 's/.*load average:\(.*\)/\1/'
+interval=1
+
+[memory]
+label=<span color="#66FFFF">  </span>
+interval=30
+
+[date]
+command=date +'%d.%m.'
+interval=60
+color=#CCFF99
+
+[time]
+command=date +'%T'
+interval=1
+color=#CCFF99

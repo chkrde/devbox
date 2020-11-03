@@ -12,7 +12,22 @@
   "json.format.enable": false,
   "yaml.completion": false,
   "git.autofetch": true,
-  "go.toolsGopath": "/home/chkrde/code/gopath",
-  "go.formatTool": "goimports",
-  "go.useLanguageServer": true
+  "go.toolsGopath": "/home/krieger/code/gopath",
+  "go.formatTool": "gofmt",
+  "go.useLanguageServer": true,
+"http.proxy": "http://10.127.230.55:8080",
+"editor.detectIndentation": false,
+"editor.tabSize": 2,
+"telemetry.enableTelemetry": false,
+"[go]": {
+
+  "editor.insertSpaces": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
+},
+"go.formatFlags": [
+  "-s"
+]
 }

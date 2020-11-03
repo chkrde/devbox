@@ -4,6 +4,9 @@
   connection: local
   run_once: true
   become: true
+  environment:
+    https_proxy: $https_proxy
+    http_proxy: $http_proxy
   tasks:
   - import_role:
       name: ansible

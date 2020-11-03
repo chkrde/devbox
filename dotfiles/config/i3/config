@@ -176,7 +176,7 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     i3bar_command i3bar -t
-    status_command i3blocks
+    status_command /sbin/i3blocks -c ~/.config/i3blocks/config
     #status_command i3status
     colors {
 #        statusline         $white
@@ -263,7 +263,7 @@ mode "$mode_gaps_outer" {
 
 for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
 
-# exec --no-startup-id /usr/bin/copyq 
+exec --no-startup-id /usr/bin/copyq 
 # exec gnome-settings-daemon
 # exec --no-startup-id /usr/bin/clipit
 
