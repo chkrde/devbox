@@ -1,0 +1,3 @@
+[submodule "dotfiles/config/i3blocks/i3blocks-contrib"]
+	path = dotfiles/config/i3blocks/i3blocks-contrib
+	url = https://github.com/vivien/i3blocks-contrib.git
