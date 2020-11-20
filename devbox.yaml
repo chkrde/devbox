@@ -5,8 +5,8 @@
   run_once: true
   become: true
   environment:
-    https_proxy: $https_proxy
-    http_proxy: $http_proxy
+    https_proxy: "{{ lookup('env', 'https_proxy') }}"
+    http_proxy: "{{ lookup('env', 'http_proxy') }}"
   tasks:
   - import_role:
       name: ansible
