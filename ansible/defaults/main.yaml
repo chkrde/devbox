@@ -1,5 +1,5 @@
 user: krieger
-go_version: 1.15.5
+go_version: 1.16
 go_server: 'https://golang.org/dl'
 terraform_version: 0.13.5
 onepassword_version: 1.7.0

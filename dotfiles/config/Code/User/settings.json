@@ -29,5 +29,10 @@
 },
 "go.formatFlags": [
   "-s"
-]
+],
+"gitlens.codeLens.enabled": false,
+"workspaceExplorer.workspaceStorageDirectory": "/home/krieger/code/workspaces",
+"workspaceExplorer.enableCustomIconSearch": false,
+"workbench.editor.decorations.badges": true,
+"workbench.editor.decorations.colors": true
 }
