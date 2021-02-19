@@ -42,5 +42,3 @@ git merge upstream/master
 
 ## Todo
 
-- get rid of snapd
-- merge firefox/user.js with <https://github.com/pyllyukko/user.js/tree/relaxed> or <https://github.com/ghacksuserjs/ghacks-user.js>
