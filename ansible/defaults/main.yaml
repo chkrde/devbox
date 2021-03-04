@@ -1,5 +1,42 @@
-user: krieger
+user: ckri
 go_version: 1.16
 go_server: 'https://golang.org/dl'
 terraform_version: 0.13.5
 onepassword_version: 1.7.0
+packages: 
+  - base-devel
+  - lsof
+  - kubectx
+  - ttf-liberation
+  - ttf-dejavu
+  - ttf-font-icons
+  - otf-font-awesome
+  - zsh-theme-powerlevel10k
+  - awesome-terminal-fonts
+  - termite
+  - shellcheck
+  - graphviz
+  - signal-desktop
+  - chromium
+  - firefox
+  - feh
+  - yq
+  - jq
+  - snapd
+  - vim
+  - mc
+  - stow
+  - tmux
+  - xfce4-terminal
+  - curl
+  - wget
+  - jq
+  - git
+  - zsh
+  - zsh-syntax-highlighting
+  - code
+  - bazel
+  - glances
+  - exa
+  - ansible-lint
+  - copyq

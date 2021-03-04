@@ -219,7 +219,7 @@ for_window [class="^.*"] border pixel 3
 #smart_borders on
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 4
 gaps outer -2
 
 # Gaps mode

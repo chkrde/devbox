@@ -1,18 +1,18 @@
 ---
 
 - name: Install aptitude
-  apt:
+  ansible.builtin.apt:
     name: aptitude
   when: ansible_distribution == "Ubuntu"
 
 - name: Disable swap
-  replace:
+  ansible.builtin.replace:
     path: /etc/fstab
     regexp: '^(\w.+?\sswap\s+\w+\s+.*)$'
     replace: '# \1'
 
 - name: Check if running as vm
-  shell: /usr/bin/dmesg | grep -q 'Hypervisor'
+  ansible.builtin.shell: /usr/bin/dmesg | grep -q 'Hypervisor'
   register: check_hypervisor
   failed_when: check_hypervisor.rc > 1
   changed_when: false

@@ -15,7 +15,6 @@
   "go.toolsGopath": "/home/krieger/code/gopath",
   "go.formatTool": "gofmt",
   "go.useLanguageServer": true,
-"http.proxy": "http://10.127.230.55:8080",
 "editor.detectIndentation": false,
 "editor.tabSize": 2,
 "telemetry.enableTelemetry": false,
@@ -30,9 +29,13 @@
 "go.formatFlags": [
   "-s"
 ],
-"gitlens.codeLens.enabled": false,
 "workspaceExplorer.workspaceStorageDirectory": "/home/krieger/code/workspaces",
 "workspaceExplorer.enableCustomIconSearch": false,
 "workbench.editor.decorations.badges": true,
-"workbench.editor.decorations.colors": true
+"workbench.editor.decorations.colors": true,
+"gitlens.hovers.currentLine.over": "line",
+"gitlens.codeLens.enabled": false,
+"gitlens.currentLine.enabled": false,
+"aws.telemetry": false,
+"liveshare.authenticationProvider": "Microsoft"
 }
