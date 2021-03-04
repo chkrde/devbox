@@ -1,4 +1,3 @@
-user: ckri
 go_version: 1.16
 go_server: 'https://golang.org/dl'
 terraform_version: 0.13.5
