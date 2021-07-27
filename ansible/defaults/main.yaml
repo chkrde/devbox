@@ -1,14 +1,22 @@
-go_version: 1.16
-go_server: 'https://golang.org/dl'
-terraform_version: 0.13.5
+go_version: 1.16.5
+go_server: "https://golang.org/dl"
+terraform_version: 1.0.1
 onepassword_version: 1.7.0
-packages: 
+packages:
+  - rofi
+  - xorg-xsetroot
   - base-devel
   - lsof
   - kubectx
   - ttf-liberation
   - ttf-dejavu
   - ttf-font-icons
+  - ttf-roboto
+  - ttf-fira-code
+  - ttf-fira-mono
+  - ttf-fira-sans
+  - noto-fonts
+  - noto-fonts-emoji
   - otf-font-awesome
   - zsh-theme-powerlevel10k
   - awesome-terminal-fonts
@@ -29,13 +37,20 @@ packages:
   - xfce4-terminal
   - curl
   - wget
-  - jq
   - git
   - zsh
   - zsh-syntax-highlighting
-  - code
   - bazel
   - glances
   - exa
   - ansible-lint
   - copyq
+  - bind-tools
+  - hugo
+  - sshuttle
+  - openstack
+  - socat
+  - zprof
+  - tcpdump
+  - strace
+  - vault

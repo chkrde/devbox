@@ -44,10 +44,10 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-set $workspace1 "1    Term"
-set $workspace2 "2    Term"
-set $workspace3 "3    Code"
-set $workspace4 "4    Web"
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
 set $workspace5 "5"
 set $workspace6 "6"
 set $workspace7 "7"
@@ -263,7 +263,15 @@ mode "$mode_gaps_outer" {
 
 for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
 
+
 exec --no-startup-id /usr/bin/copyq 
-# exec gnome-settings-daemon
 # exec --no-startup-id /usr/bin/clipit
+# exec gnome-settings-daemon
+
+# black/no background
+exec --no-startup-id xsetroot
+exec --no-startup-id VBoxClient --clipboard
+
+exec --no-startup-id i3-msg "workspace 1; append_layout ~/.config/i3/i3-workspace-1.json"
+exec xfce4-terminal
 

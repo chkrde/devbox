@@ -29,6 +29,11 @@ ansible-playbook devbox.yaml
 # ansible-playbook -K --tags "env"  devbox.yaml
 ```
 
+```bash
+go get github.com/dty1er/kubecolor/cmd/kubecolor
+# go get -u  github.com/dty1er/kubecolor/cmd/kubecolor
+```
+
 ## Workflow reminder
 
 ```bash
@@ -40,6 +45,12 @@ git checkout master
 git merge upstream/master
 ```
 
+## Other
+
+Firefox about:config settings
+
+```txt
+ui.context_menus.after_mouseup
+```
+
 ## Todo
-
-

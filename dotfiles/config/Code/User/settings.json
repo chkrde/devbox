@@ -1,8 +1,6 @@
 {
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Visual Studio Light",
   "window.titleBarStyle": "custom",
-  "workbench.iconTheme": "vscode-icons",
   "files.associations": {
     "*.yaml": "yaml"
   },
@@ -12,9 +10,8 @@
   "json.format.enable": false,
   "yaml.completion": false,
   "git.autofetch": true,
-  "go.toolsGopath": "/home/krieger/code/gopath",
+  "go.toolsGopath": "/home/krieger/code",
   "go.formatTool": "gofmt",
-  "go.useLanguageServer": true,
 "editor.detectIndentation": false,
 "editor.tabSize": 2,
 "telemetry.enableTelemetry": false,
@@ -29,13 +26,59 @@
 "go.formatFlags": [
   "-s"
 ],
-"workspaceExplorer.workspaceStorageDirectory": "/home/krieger/code/workspaces",
-"workspaceExplorer.enableCustomIconSearch": false,
+"workspaceSidebar.folder": "/home/ckri/code/workspaces",
+"workspaceExplorer.workspaceStorageDirectory": "/home/ckri/code/workspaces",
 "workbench.editor.decorations.badges": true,
 "workbench.editor.decorations.colors": true,
 "gitlens.hovers.currentLine.over": "line",
 "gitlens.codeLens.enabled": false,
 "gitlens.currentLine.enabled": false,
 "aws.telemetry": false,
-"liveshare.authenticationProvider": "Microsoft"
+"liveshare.authenticationProvider": "Microsoft",
+"editor.suggestSelection": "first",
+"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+"shellcheck.ignorePatterns": {
+
+  "**/*.zsh": true,
+  "**/*.zshrc": true,
+  "**/zshrc": true,
+  "**/*.zprofile": true,
+  "**/zprofile": true,
+  "**/*.zlogin": true,
+  "**/zlogin": true,
+  "**/*.zlogout": true,
+  "**/zlogout": true,
+  "**/*.zshenv": true,
+  "**/zshenv": true,
+  "**/*.zsh-theme": true
+},
+"workspaceSidebar.showPaths": "Always",
+"gitlab.instanceUrl": "https://git.d-velop.de",
+"workbench.iconTheme": "vscode-icons",
+"workbench.editorAssociations": {
+  "*.ipynb": "jupyter.notebook.ipynb"
+},
+"extensions.ignoreRecommendations": true,
+"cSpell.enabled": true,
+"hadolint.hadolintPath": "/home/ckri/bin/hadolint",
+"python.linting.banditEnabled": true,
+"python.formatting.autopep8Path": "",
+"editor.formatOnSave": true,
+"python.formatting.autopep8Args": [
+  "--indent-size=2",
+  "--ignore E121"
+],
+"yaml.customTags": [
+  "!encrypted/pkcs1-oaep scalar",
+  "!vault scalar"
+],
+"go.toolsManagement.autoUpdate": true,
+"go.alternateTools": {
+
+},
+"Notes.notesLocation": "/home/ckri/code/workspaces",
+"security.workspace.trust.untrustedFiles": "open",
+"redhat.telemetry.enabled": false,
+"scm.defaultViewMode": "tree",
+"window.zoomLevel": -1
 }

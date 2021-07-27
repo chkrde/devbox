@@ -35,4 +35,5 @@ MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
 ScrollingUnlimited=TRUE
 ShortcutsNoHelpkey=TRUE
+ShortcutsNoMenukey=TRUE
 
