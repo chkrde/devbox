@@ -54,3 +54,12 @@ packages:
   - tcpdump
   - strace
   - vault
+  - mitmproxy
+  - docker-compose
+  - kubeseal
+  - cloud-image-utils
+  - qemu
+  - lynx
+  - virt-viewer
+  - virt-manager
+

@@ -80,5 +80,5 @@
 "security.workspace.trust.untrustedFiles": "open",
 "redhat.telemetry.enabled": false,
 "scm.defaultViewMode": "tree",
-"window.zoomLevel": -1
+"window.zoomLevel": 2
 }
