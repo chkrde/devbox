@@ -59,7 +59,7 @@
   "*.ipynb": "jupyter.notebook.ipynb"
 },
 "extensions.ignoreRecommendations": true,
-"cSpell.enabled": true,
+"cSpell.enabled": false,
 "hadolint.hadolintPath": "/home/ckri/bin/hadolint",
 "python.linting.banditEnabled": true,
 "python.formatting.autopep8Path": "",
@@ -80,5 +80,12 @@
 "security.workspace.trust.untrustedFiles": "open",
 "redhat.telemetry.enabled": false,
 "scm.defaultViewMode": "tree",
-"window.zoomLevel": 2
+"files.watcherExclude": {
+  "**/bazel-*/**": true
+},
+"files.insertFinalNewline": true,
+"files.trimFinalNewlines": true,
+"files.trimTrailingWhitespace": true,
+"explorer.confirmDragAndDrop": false,
+"shellcheck.executablePath": "/usr/bin/shellcheck"
 }

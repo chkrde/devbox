@@ -107,7 +107,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch workspace to 
+# switch workspace to
 bindsym $mod+shift+m move workspace to output right
 bindsym $mod+shift+n move workspace to output left
 
@@ -200,10 +200,6 @@ client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-assign [class="Chromium-browser"] $workspace4
-assign [class="Rambox"] $workspace4
-#assign [class="Code"] $workspace1
-assign [class="jetbrains-idea"] $workspace3
 
 
 ### i3-gaps stuff ###
@@ -263,8 +259,12 @@ mode "$mode_gaps_outer" {
 
 for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
 
+#assign [class="Chromium-browser"] $workspace4
+#assign [class="Rambox"] $workspace4
+assign [class="Code"] $workspace1
+#assign [class="jetbrains-idea"] $workspace3
 
-exec --no-startup-id /usr/bin/copyq 
+exec --no-startup-id /usr/bin/copyq
 # exec --no-startup-id /usr/bin/clipit
 # exec gnome-settings-daemon
 
@@ -272,6 +272,9 @@ exec --no-startup-id /usr/bin/copyq
 exec --no-startup-id xsetroot
 exec --no-startup-id VBoxClient --clipboard
 
-exec --no-startup-id i3-msg "workspace 1; append_layout ~/.config/i3/i3-workspace-1.json"
-exec xfce4-terminal
+exec --no-startup-id i3-msg "workspace 1; append_layout ~/.config/i3/workspace-1.json"
+exec --no-startup-id i3-msg "workspace 2; append_layout ~/.config/i3/workspace-2.json"
+exec xfce4-terminal --role=top
+exec xfce4-terminal --role=bottom
 
+exec --no-startup-id i3-msg 'workspace 1:Web; exec /usr/bin/firefox

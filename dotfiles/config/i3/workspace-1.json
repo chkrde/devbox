@@ -1,0 +1,77 @@
+
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 362,
+               "width": 576,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "Terminal - ",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^Xfce4-terminal$",
+                "instance": "^xfce4-terminal$",
+                "window_role": "^top$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 338,
+               "width": 576,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "Terminal - ",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^Xfce4-terminal$",
+                "instance": "^xfce4-terminal$",
+                "window_role": "^bottom$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 623,
+       "width": 2102,
+       "x": 5,
+       "y": 22
+    },
+    "marks": [],
+    "name": "Welcome - k8sp (Workspace) - Visual Studio Code",
+    "percent": 0.5,
+    "swallows": [
+       {
+        "class": "^Code$",
+        "instance": "^code$"
+       }
+    ],
+    "type": "con"
+}
