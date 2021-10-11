@@ -44,16 +44,16 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-set $workspace1 "1"
-set $workspace2 "2"
-set $workspace3 "3"
-set $workspace4 "4"
-set $workspace5 "5"
-set $workspace6 "6"
-set $workspace7 "7"
-set $workspace8 "8"
-set $workspace9 "9"
-set $workspace10 "10"
+set $workspace1 "-1-"
+set $workspace2 "-2-"
+set $workspace3 "-3-"
+set $workspace4 "-4-"
+set $workspace5 "-5-"
+set $workspace6 "-6-"
+set $workspace7 "-7-"
+set $workspace8 "-8-"
+set $workspace9 "-9-"
+set $workspace10 "-10-"
 
 # change focus
 bindsym $mod+j focus left
@@ -175,10 +175,14 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     position top
-    i3bar_command i3bar -t
-    status_command /sbin/i3blocks -c ~/.config/i3blocks/config
-    #status_command i3status
-    colors {
+    i3bar_command i3bar
+    status_command exec ~/.local/bin/mybar
+    font pango:DejaVu Sans Mono 12
+    tray_output DP-1-2
+    # -t
+    #status_command /sbin/i3blocks -c ~/.config/i3blocks/config
+#     status_command i3status
+#     colors {
 #        statusline         $white
 #        background         $black
 #        separator          $transparent
@@ -189,7 +193,7 @@ bar {
 #        active_workspace   $transparent $transparent $white
 #        urgent_workspace   $darkred     $darkred     $transparent
 #        binding_mode       $darkred     $darkred     $transparent
-    }
+#     }
 }
 
 # Colors
@@ -215,7 +219,7 @@ for_window [class="^.*"] border pixel 3
 #smart_borders on
 
 # Set inner/outer gaps
-gaps inner 4
+gaps inner 10
 gaps outer -2
 
 # Gaps mode
@@ -259,22 +263,35 @@ mode "$mode_gaps_outer" {
 
 for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
 
-#assign [class="Chromium-browser"] $workspace4
-#assign [class="Rambox"] $workspace4
-assign [class="Code"] $workspace1
-#assign [class="jetbrains-idea"] $workspace3
+exec --no-startup-id xrandr --output DP-1-3 --mode 3840x2160 --rotate right --rate 30 --right-of DP-1-2 --scale 0.6x0.6
 
+# 2nd display settings
+#exec --no-startup-id xrandr --output DP-1-3 --mode 3840x2160 --rotate right --rate 30 --right-of DP-1-2 --scale 0.6x0.6
+workspace $workspace2 output primary
+workspace $workspace1 output DP-1-2
+workspace $workspace3 output DP-1-3
+
+# Set background
+exec --no-startup-id xsetroot -solid "#000000"
+#exec --no-startup-id gio cat "$(gsettings get org.gnome.desktop.background picture-uri | sed -E "s/^'(.*)'$/\1/")" | feh --bg-scale -
+
+# Load workspace layout and run programs to fit into layout
+#exec --no-startup-id i3-msg "workspace 1; append_layout ~/.config/i3/workspace-1.json"
+#exec --no-startup-id i3-msg "workspace 2; append_layout ~/.config/i3/workspace-2.json"
+#exec xfce4-terminal --role=top
+#exec xfce4-terminal --role=bottom
+
+# Default sound devices, find out with
+# pactl list short sinks
+# pactl list short sources
+exec --no-startup-id pactl set-default-sink alsa_output.usb-Synaptics_Targus_DOCK221_000000000000-00.analog-stereo
+exec --no-startup-id pactl set-default-source alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7K0YVG15036EF-00.analog-stereo 
+
+# Stuff
 exec --no-startup-id /usr/bin/copyq
-# exec --no-startup-id /usr/bin/clipit
-# exec gnome-settings-daemon
+exec --no-startup-id /home/kriegec/.local/bin/streamdeck --no-ui
 
-# black/no background
-exec --no-startup-id xsetroot
-exec --no-startup-id VBoxClient --clipboard
+# Old
+#exec --no-startup-id i3-msg 'workspace 1:Web; exec /usr/bin/firefox
+#exec --no-startup-id VBoxClient --clipboard
 
-exec --no-startup-id i3-msg "workspace 1; append_layout ~/.config/i3/workspace-1.json"
-exec --no-startup-id i3-msg "workspace 2; append_layout ~/.config/i3/workspace-2.json"
-exec xfce4-terminal --role=top
-exec xfce4-terminal --role=bottom
-
-exec --no-startup-id i3-msg 'workspace 1:Web; exec /usr/bin/firefox
