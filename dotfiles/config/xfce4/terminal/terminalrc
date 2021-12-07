@@ -1,5 +1,5 @@
 [Configuration]
-FontName=DejaVu Sans Mono 9
+FontName=Hack Nerd Font 10
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
@@ -25,15 +25,16 @@ MiscRewrapOnResize=TRUE
 MiscUseShiftArrowsToScroll=FALSE
 MiscSlimTabs=FALSE
 MiscNewTabAdjacent=FALSE
-ColorForeground=#93a1a1
-ColorBackground=#002b36
-ColorPalette=#002b36;#dc322f;#859900;#b58900;#268bd2;#6c71c4;#2aa198;#93a1a1;#657b83;#dc322f;#859900;#b58900;#268bd2;#6c71c4;#2aa198;#fdf6e3
-ColorCursor=#93a1a1
-ColorBold=#93a1a1
-ColorBoldUseDefault=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
 ScrollingUnlimited=TRUE
 ShortcutsNoHelpkey=TRUE
 ShortcutsNoMenukey=TRUE
+ColorForeground=#839496
+ColorBackground=#002b36
+ColorCursor=#93a1a1
+ColorPalette=rgb(7,54,66);rgb(220,50,47);rgb(133,153,0);rgb(181,137,0);rgb(38,139,210);rgb(211,54,130);rgb(42,161,152);rgb(238,232,213);rgb(0,43,54);rgb(203,75,22);rgb(88,110,117);rgb(190,125,85);rgb(42,167,182);rgb(108,113,196);rgb(147,161,161);rgb(253,246,227)
+TabActivityColor=#dc322f
+ColorBold=#93a1a1
+ColorBoldUseDefault=FALSE
 

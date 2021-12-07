@@ -38,28 +38,33 @@ bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
+#bindsym $mod+d exec rofi -show run -lines 12 -padding 18 -width 40 -location 0 -sidebar-mode -columns 2 -font 'Noto Sans 8'
+#bindsym $mod+d exec "rofi -modi combi,run,drun -show combi -combi-modi run,drun -lines 12 -padding 18 -width 40 -location 0 -columns 2 -font 'Noto Sans 8' -mesg "
+#bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
 bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
-set $workspace1 "-1-"
-set $workspace2 "-2-"
-set $workspace3 "-3-"
-set $workspace4 "-4-"
-set $workspace5 "-5-"
-set $workspace6 "-6-"
-set $workspace7 "-7-"
-set $workspace8 "-8-"
-set $workspace9 "-9-"
-set $workspace10 "-10-"
+set $workspace1 "1:  "
+set $workspace2 "2:  "
+set $workspace3 "3:  "
+set $workspace4 "4: 4 "
+set $workspace5 "5: 5 "
+set $workspace6 "6: 6 "
+set $workspace7 "7: 7 "
+set $workspace8 "8: 8 "
+set $workspace9 "9: 9 "
+set $workspace10 "10: 10 "
 
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+l focus right
+bindsym $mod+i focus up
+#bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -70,8 +75,9 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+i move up
+#bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -145,6 +151,30 @@ bindsym $mod+Shift+r restart
 #bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Lock screen with Mod+ALT+L
+bindsym $mod+mod1+l exec "i3lock-fancy -p -- scrot -z" 
+
+# Mute default source with Mod+m
+#bindsym --release $mod+m exec xdotool search --name '.*Microsoft Teams - Google Chrome' windowactivate %@ key --window %@ ctrl+f12 windowactivate $(xdotool getactivewindow)
+bindsym $mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Pulse Audio controlsMaster
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -153,10 +183,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym i resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 5 px or 5 ppt
@@ -176,40 +206,51 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     i3bar_command i3bar
-    status_command exec ~/.local/bin/mybar
-    font pango:DejaVu Sans Mono 12
+    #status_command exec ~/.local/bin/mybar
+    status_command ~/.local/bin/i3status-rs ~/.config/i3status-rust/config.toml
+#    font pango:DejaVu Sans Mono, FontAwesome5Free 10
+    font pango:DejaVu Sans Mono, FontAwesome 10
+    #font pango:Hack Nerd Font Mono 9.9
+    #font pango:FontAwesome 10
     tray_output DP-1-2
+    tray_padding 4
+    workspace_min_width 60
+    strip_workspace_numbers yes
+#     height 20
     # -t
     #status_command /sbin/i3blocks -c ~/.config/i3blocks/config
 #     status_command i3status
-#     colors {
-#        statusline         $white
-#        background         $black
-#        separator          $transparent
+    #separator_symbol ":|:"
+    colors {
+        background #303030
+        statusline #ffffff
+        separator #666666
 
-#                          BORDER       BACKGROUND   TEXT
-#        focused_workspace  $transparent $transparent $darkwhite
-#        inactive_workspace $transparent $transparent $white
-#        active_workspace   $transparent $transparent $white
-#        urgent_workspace   $darkred     $darkred     $transparent
-#        binding_mode       $darkred     $darkred     $transparent
-#     }
+#          <colorclass> <border> <background> <text>
+        focused_workspace  #4c7899 #d26d26 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #444444 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
+    }
 }
 
 # Colors
-# class            border  backgr. text    indicator child_border
-client.focused     #4c7899 #285577 #ffffff #2e9ef4   #b04e4e
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+# class              border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #5E81AC   #d26d26
+#client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.focused_inactive #333333 #5f676a #ffffff #285577   #285577
+#client.unfocused        #333333 #222222 #888888 #285577   #285577
+client.unfocused        #333333 #222222 #888888 #285577   #285577
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-
 
 ### i3-gaps stuff ###
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 5
+#default_border pixel 1
+#default_floating_border pixel 1
 
 # Smart Gaps
 #smart_gaps on
@@ -219,8 +260,8 @@ for_window [class="^.*"] border pixel 3
 #smart_borders on
 
 # Set inner/outer gaps
-gaps inner 10
-gaps outer -2
+gaps inner 2
+gaps outer 2
 
 # Gaps mode
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -261,37 +302,43 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
-
+# display and workspace  settings
 exec --no-startup-id xrandr --output DP-1-3 --mode 3840x2160 --rotate right --rate 30 --right-of DP-1-2 --scale 0.6x0.6
-
-# 2nd display settings
-#exec --no-startup-id xrandr --output DP-1-3 --mode 3840x2160 --rotate right --rate 30 --right-of DP-1-2 --scale 0.6x0.6
 workspace $workspace2 output primary
 workspace $workspace1 output DP-1-2
 workspace $workspace3 output DP-1-3
 
 # Set background
-exec --no-startup-id xsetroot -solid "#000000"
+#exec --no-startup-id xsetroot -solid "#000000"
+exec --no-startup-id xsetroot -solid "#285577"
 #exec --no-startup-id gio cat "$(gsettings get org.gnome.desktop.background picture-uri | sed -E "s/^'(.*)'$/\1/")" | feh --bg-scale -
 
 # Load workspace layout and run programs to fit into layout
-#exec --no-startup-id i3-msg "workspace 1; append_layout ~/.config/i3/workspace-1.json"
-#exec --no-startup-id i3-msg "workspace 2; append_layout ~/.config/i3/workspace-2.json"
-#exec xfce4-terminal --role=top
-#exec xfce4-terminal --role=bottom
+# create with 
+# i3-save-tree --workspace $workspace1 > workspace-1.json
+# window information with xprop
+exec --no-startup-id i3-msg "workspace $workspace1; append_layout ~/.config/i3/workspace-1.json"
+exec --no-startup-id i3-msg "workspace $workspace2; append_layout ~/.config/i3/workspace-2.json"
+exec --no-startup-id i3-msg "workspace $workspace3; append_layout ~/.config/i3/workspace-3.json"
+
+exec xfce4-terminal --role=top
+exec xfce4-terminal --role=bottom
+exec --no-startup-id /home/kriegec/.local/bin/chrome-teams
+# exec_always echo "$(date)"  >> /home/kriegec/last
 
 # Default sound devices, find out with
 # pactl list short sinks
 # pactl list short sources
 exec --no-startup-id pactl set-default-sink alsa_output.usb-Synaptics_Targus_DOCK221_000000000000-00.analog-stereo
-exec --no-startup-id pactl set-default-source alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7K0YVG15036EF-00.analog-stereo 
+exec --no-startup-id pactl set-default-sourrece alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7K0YVG15036EF-00.analog-stereo
 
 # Stuff
+for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
 exec --no-startup-id /usr/bin/copyq
 exec --no-startup-id /home/kriegec/.local/bin/streamdeck --no-ui
+for_window [instance="^Todour$" class="^Todour$"] border pixel 1, floating enable
+exec --no-startup-id /home/kriegec/.local/bin/Todour
 
 # Old
 #exec --no-startup-id i3-msg 'workspace 1:Web; exec /usr/bin/firefox
 #exec --no-startup-id VBoxClient --clipboard
-

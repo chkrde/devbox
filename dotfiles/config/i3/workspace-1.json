@@ -1,10 +1,9 @@
-
 {
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
     "marks": [],
-    "percent": 0.5,
+    "percent": 0.3484375,
     "type": "con",
     "nodes": [
         {
@@ -13,7 +12,7 @@
             "floating": "auto_off",
             "geometry": {
                "height": 362,
-               "width": 576,
+               "width": 574,
                "x": 0,
                "y": 0
             },
@@ -34,8 +33,8 @@
             "current_border_width": 3,
             "floating": "auto_off",
             "geometry": {
-               "height": 338,
-               "width": 576,
+               "height": 362,
+               "width": 574,
                "x": 0,
                "y": 0
             },
@@ -55,23 +54,32 @@
 }
 
 {
-    "border": "pixel",
-    "current_border_width": 3,
+    "border": "normal",
     "floating": "auto_off",
-    "geometry": {
-       "height": 623,
-       "width": 2102,
-       "x": 5,
-       "y": 22
-    },
+    "layout": "splith",
     "marks": [],
-    "name": "Welcome - k8sp (Workspace) - Visual Studio Code",
-    "percent": 0.5,
-    "swallows": [
-       {
-        "class": "^Code$",
-        "instance": "^code$"
-       }
-    ],
-    "type": "con"
+    "percent": 0.6515625,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 756,
+               "width": 2471,
+               "x": 3270,
+               "y": 20
+            },
+            "marks": [],
+            "percent": 1,
+            "swallows": [
+               {
+               "class": "^Code$",
+               "instance": "^code$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
 }
