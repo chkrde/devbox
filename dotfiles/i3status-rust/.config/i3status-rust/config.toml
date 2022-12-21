@@ -1,0 +1,324 @@
+[theme]
+name = "solarized-dark"
+# [theme.overrides]
+# separator = ""
+
+[icons]
+name = "awesome"
+[icons.overrides]
+# override icons for toggle and custom blocks
+backlight_1 = ""
+backlight_2 = ""
+backlight_3 = ""
+backlight_4 = ""
+backlight_5 = ""
+backlight_6 = "ﰝ"
+backlight_7 = ""
+backlight_8 = ""
+backlight_9 = ""
+# override other icons
+net_wired = ""
+net_up = ""
+net_down = ""
+disk_drive = ""
+cogs=""
+cpu=""
+memory_mem=""
+
+# [[block]]
+# block = "networkmanager"
+# on_click = "gnome-control-center"
+# interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+# interface_name_include = []
+# [block.theme_overrides]
+# idle_bg = "#5E81AC"
+# idle_fg = "#ffffffff"
+
+# Display red on-air block when microphone is unmuted, blend to i3bar color when muted
+# [[block]]
+# block = "custom"
+# command = "/home/kriegec/.config/i3status-rust/on-air.bash"
+# json = true
+# interval = 1
+# [block.theme_overrides]
+# idle_bg = "#303030"
+# idle_fg = "#303030ff"
+# warning_fg="#ffffffff"
+# warning_bg="#FF0000"
+
+[[block]]
+block = "net"
+# device = "enx4c56df200462"
+# format = "{ip} {speed_up;K*b}{speed_down;K*b}"
+format = " {speed_up;K*b} {speed_down;K*b}"
+icons_format = " {icon}"
+interval = 2
+hide_inactive = true
+[block.theme_overrides]
+idle_bg = "#5E81AC"
+idle_fg = "#ffffffff"
+
+# Toggle vpn (patched toggle block with 'idle' and 'good' status)
+# TODO: register vpn as user service
+[[block]]
+block = "toggle"
+text = "vpn"
+command_state = "ifconfig -a tun0"
+command_on = "systemctl --user start dhc-proxy"
+command_off = "systemctl --user stop dhc-proxy"
+interval = 5
+icons_format = ""
+[block.theme_overrides]
+idle_bg = "#5E81AC"
+idle_fg = "#999999ff"
+good_bg = "#5E81AC"
+good_fg = "#35e01fff"
+
+# Toggle dhc-proxy on/off (patched toggle block with 'idle' and 'good' status)
+[[block]]
+block = "toggle"
+text = "proxy"
+command_state = "systemctl --user status dhc-proxy|grep 'active (running)'"
+command_on = "systemctl --user start dhc-proxy"
+command_off = "systemctl --user stop dhc-proxy"
+interval = 5
+icons_format = ""
+[block.theme_overrides]
+idle_bg = "#5E81AC"
+idle_fg = "#999999ff" # grey
+good_bg = "#5E81AC"
+good_fg = "#35e01fff" # green
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
+[block.theme_overrides]
+idle_bg = "#81A1C1"
+idle_fg = "#404040ff"
+info_bg = "#81A1C1"
+info_fg = "#880000ff"
+
+[[block]]
+block = "cpu"
+interval = 1
+[block.theme_overrides]
+idle_bg = "#81A1C1"
+idle_fg = "#404040ff"
+info_bg = "#81A1C1"
+info_fg = "#660000ff"
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+[block.theme_overrides]
+idle_bg = "#81A1C1"
+idle_fg = "#404040ff"
+info_bg = "#81A1C1"
+info_fg = "#990000ff"
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{average}"
+chip = "*-isa-*"
+# inputs = ["CPUTIN", "SYSTIN"]
+[block.theme_overrides]
+idle_bg = "#81A1C1"
+idle_fg = "#404040ff"
+info_bg = "#81A1C1"
+info_fg = "#660000ff"
+
+# [[block]]
+# block = "disk_space"
+# path = "/"
+# alias = "/"
+# info_type = "available"
+# unit = "GB"
+# interval = 20
+# warning = 20.0
+# alert = 10.0
+# format = "{icon} {free}"
+# [block.theme_overrides]
+# idle_bg = "#81A1C1"
+# idle_fg = "#404040ff"
+
+# [[block]]
+# block = "keyboard_layout"
+# driver = "setxkbmap"
+# interval = 15
+# [block.theme_overrides]
+# idle_bg = "#88C0D0"
+# idle_fg = "#404040ff"
+
+# toggle between us intl and de
+[[block]]
+block = "custom"
+command = "echo  $(setxkbmap -print | grep symbol | sed 's/[^+]*+\\([^+]*\\).*/\\1/')"
+on_click = "setxkbmap -print|grep -q 'eu' && setxkbmap -layout de || setxkbmap -layout eu"
+interval = 5
+[block.theme_overrides]
+idle_bg = "#88C0D0"
+idle_fg = "#404040ff"
+
+# [[block]]
+# block = "music"
+# #player = "spotify"
+# buttons = ["play"]
+# hide_when_empty	= true
+# [block.theme_overrides]
+# idle_bg = "#D8DEE9"
+# idle_fg = "#404040ff"
+# good_bg = "#D8DEE9"
+# good_fg = "#404040ff"
+
+# Mute/unmute microphone
+[[block]]
+block = "toggle"
+text = ""
+command_state = "pactl info | grep 'Default Source' | awk '{print $3}' | while IFS= read -r source; do pactl list sources |grep $source -A6|grep 'Mute: yes';done"
+command_on = "/home/kriegec/.config/i3status-rust/source-mute-toggle.bash"
+command_off = "/home/kriegec/.config/i3status-rust/source-mute-toggle.bash"
+interval = 1
+icon_on = "backlight_1"
+icon_off = "backlight_2"
+icons_format = " mute {icon}"
+[block.theme_overrides]
+idle_bg = "#FF4444ff"
+idle_fg = "#404040ff"
+good_bg = "#D8DEE9"
+good_fg = "#404040ff"
+
+[[block]]
+block = "toggle"
+text = ""
+command_state = "pactl info |grep 'Default Source: alsa_input.usb-'"
+# command_on = "pactl set-default-source alsa_input.usb-Focusrite_Scarlett_4i4_USB_D8B96VZ191EB2C-00.multichannel-input"
+# command_on = "pactl set-default-source alsa_input.usb-Behringer_UV1-00.stereo-fallback"
+# command_on = "pactl set-default-source alsa_input.usb-Behringer_UV1-00.analog-stereo"
+command_on = "pactl list sources short | grep input.usb-Behringer | awk '{print $2}' | xargs -0 pactl set-default-source"
+# command_on = "pactl set-default-source alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7K0YVG15036EF-00.iec958-stereo"
+command_off = "pactl set-default-source alsa_input.pci-0000_00_1f.3.analog-stereo"
+interval = 2
+icon_on = "backlight_8"
+icon_off = "backlight_9"
+icons_format = "in:{icon}"
+[block.theme_overrides]
+idle_bg = "#D8DEE9"
+idle_fg = "#404040ff"
+good_bg = "#D8DEE9"
+good_fg = "#404040ff"
+
+[[block]]
+block = "toggle"
+text = ""
+command_state = "pactl info |grep 'Default Sink: alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_4_Dock_USB_Audio_000000000000-00.analog-stereo'"
+command_on = "pactl set-default-sink alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_4_Dock_USB_Audio_000000000000-00.analog-stereo"
+command_off = "pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo"
+interval = 2
+icon_on = "backlight_6"
+icon_off = "backlight_7"
+icons_format = "out:{icon}"
+[block.theme_overrides]
+idle_bg = "#D8DEE9"
+idle_fg = "#404040ff"
+good_bg = "#D8DEE9"
+good_fg = "#404040ff"
+
+[[block]]
+block = "sound"
+[block.theme_overrides]
+idle_bg = "#D8DEE9"
+idle_fg = "#404040ff"
+
+# Toggle home/remote audio config
+# TODO: add xrandr screen config to scripts
+# [[block]]
+# block = "toggle"
+# text = ""
+# command_state = "pactl info |grep 'Default Source: alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7K0YVG15036EF-00.analog-stereo'"
+# command_on = "/home/kriegec/.local/bin/config-home.bash"
+# command_off = "/home/kriegec/.local/bin/config-remote.bash"
+# interval = 2
+# icon_on = "backlight_4"
+# icon_off = "backlight_5"
+# icons_format = " {icon}"
+# [block.theme_overrides]
+# idle_bg = "#A3BE8C"
+# idle_fg = "#404040ff"
+# good_bg = "#A3BE8C"
+# good_fg = "#404040ff"
+
+# [[block]]
+# block = "custom"
+# command = "echo "
+# on_click = 'xrandr --output DP-1-3 --mode 3840x2160 --rotate right --rate 60 --right-of DP-1-2 --scale 0.6x0.6'
+# interval = "once"
+# [block.theme_overrides]
+# idle_bg = "#A3BE8C"
+# idle_fg = "#404040ff"
+
+# Activate screensaver
+# [[block]]
+# block = "custom"
+# command = "echo "
+# on_click = 'exec i3lock'
+# interval = "once"
+# [block.theme_overrides]
+# idle_bg = "#A3BE8C"
+# idle_fg = "#404040ff"
+
+# [[block]]
+# disabled = true
+# block = "apt"
+# interval = 600
+# format = "{count:1} updates available"
+# format_singular = "{count:1} update available"
+# format_up_to_date = ""
+# critical_updates_regex = "(linux|linux-lts|linux-zen)"
+# # shows dmenu with cached available updates. Any dmenu alternative should also work.
+# on_click = "APT_CONFIG=/tmp/i3rs-apt/apt.conf apt list --upgradable | tail -n +2 | rofi -dmenu"
+# #on_click = "sudo gpk-update-viewer"
+# [block.theme_overrides]
+# idle_bg = "#A3BE8C"
+# idle_fg = "#404040ff"
+
+# [[block]]
+# disabled = true
+# block = "custom"
+# command = "echo xkcd"
+# on_click = "xdg-open 'https://c.xkcd.com/random/comic/'"
+# interval = "once"
+
+[[block]]
+block = "battery"
+interval = 10
+full_format = "{percentage} "
+[block.theme_overrides]
+# good_bg = "#ffffff"
+good_bg = "#A3BE8C"
+warning_bg = "#EBCB8B"
+critical_bg = "#D08770"
+
+[[block]]
+block = "time"
+interval = 5
+# format = "%a,%d.%m. %R"
+format = "%d.%m. W%U %R"
+[block.theme_overrides]
+idle_bg = "#FFB266"
+idle_fg = "#404040ff"
+
+# Reload bar config block
+[[block]]
+block = "custom"
+command = "echo "
+on_click = "kill -12 $(ps aux | grep 'i3status-rs' | grep -v '/bin/sh\\|grep' | awk '{print $2}')"
+interval = "once"
+[block.theme_overrides]
+idle_bg = "#303030"
+# idle_bg = "#c326d2"
+idle_fg = "#ffffffff"

@@ -1,0 +1,127 @@
+
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.4484375,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "floating": "auto_off",
+            "layout": "tabbed",
+            "marks": [],
+            "percent": 1,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "normal",
+                    "floating": "auto_off",
+                    "layout": "splitv",
+                    "marks": [],
+                    "percent": 0.5,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "pixel",
+                            "current_border_width": 3,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 362,
+                               "width": 574,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "marks": [],
+                            "name": "source - ",
+                            "percent": 0.5,
+                            "swallows": [
+                               {
+                                "class": "^Xfce4-terminal$",
+                                "instance": "^xfce4-terminal$"
+                               }
+                            ],
+                            "type": "con"
+                        },
+                        {
+                            "border": "pixel",
+                            "current_border_width": 3,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 362,
+                               "width": 574,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "marks": [],
+                            "name": "source - ",
+                            "percent": 0.5,
+                            "swallows": [
+                               {
+                                "class": "^Xfce4-terminal$",
+                                "instance": "^xfce4-terminal$"
+                               }
+                            ],
+                            "type": "con"
+                        }
+                    ]
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 3,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1564,
+                       "width": 1243,
+                       "x": 3262,
+                       "y": 29
+                    },
+                    "marks": [],
+                    "name": "config - .config - Visual Studio Code",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                        "class": "^Code$",
+                        "instance": "^code$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        }
+    ]
+}
+
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5515625,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1040,
+               "width": 1902,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "pcscd - Google Suche — Mozilla Firefox",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^firefox$",
+                "instance": "^Navigator$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

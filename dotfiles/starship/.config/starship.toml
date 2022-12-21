@@ -1,0 +1,295 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+scan_timeout = 10
+format = """
+$username\
+$hostname\
+$shlvl\
+$singularity\
+$kubernetes\
+$env_var\
+${custom.ostack}\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$cobol\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$crystal\
+$custom\
+$jobs\
+$battery\
+$fill\
+${custom.zsh}\
+${custom.bash}\
+$cmd_duration\
+$shell\
+$time\
+$status\
+${custom.daily}\
+${custom.beer}\
+${custom.lunch}\
+$line_break\
+${custom.return}\
+$character
+"""
+
+
+[character]
+format = "$symbol "
+success_symbol = '[\$](bold fg:2)'
+# error_symbol = '[\$](bold fg:1)'
+error_symbol = '🔥'
+
+[status]
+# style = "bg:3  fg:15"
+style = "fg:214"
+symbol = "🔥"
+# format = '[$common_meaning$signal_name\($int\) ]($style)'
+format = '[>](fg:#505050) [$common_meaning$signal_name\($int\) ]($style)'
+# format = '[ $common_meaning$signal_name \($int\) ]($style)[](fg:3 bg:#004266)'
+# format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
+map_symbol = true
+disabled = false
+
+[shell]
+disabled = true
+
+[line_break]
+disabled = false
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[terraform]
+disabled = true
+
+[username]
+style_user = "fg:253 bg:242"
+style_root = "red bold"
+format = "[$user]($style)"
+disabled = true
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  "[@$hostname ](fg:248 bg:242)[](fg:242 bg:12)"
+trim_at = ".host.net"
+disabled = true
+
+[fill]
+symbol = " "
+style = "bold green"
+disabled = true
+
+[kubernetes]
+# with env var after k8s
+# format = '[[ﴱ](fg:15)[$context](fg:45)\($namespace\) ](fg:248)'
+#    
+format = '[[ﴱ](fg:15)[$context](fg:38)$namespace ](fg:248)'
+#format  = '[ [ﴱ](fg:255 bg:#004266)  [$context]( bold fg:251 bg:#004266) \([$namespace](fg:251 bg:#004266)\) ](fg:251 bg:#004266)[](fg:#004266 bg:#157399)'
+# only k8s: # format  = '[ [ﴱ](fg:255 bg:#004266) [$context]( bold fg:251 bg:#004266) \([$namespace](fg:251 bg:#004266)\) ](fg:251 bg:#004266)[](fg:#004266 bg:#002b36)'
+disabled = false
+[kubernetes.context_aliases]
+'^(?P<tenant>\S{3}p\S{3})-cluster-admin' = ' $tenant'
+'^(?P<tenant>\S{3}pc\S{3})-cluster-admin' = ' $tenant'
+# '^(?P<tenant>\S{3}[()]p\S{3})-cluster-admin' = ' test $tenant'
+
+# '^(?P<tenant>\S{3}pc.+)' = ' $tenant'
+# '^(?P<tenant>\S{3}p005.+)' = ' $tenant'
+# '^(?P<tenant>\S{3}p006.+)' = ' $tenant'
+
+# '^(?P<tenant>\S{3}pc\S{3})-cluster-admin' = 'dev $tenant'
+# '^(?P<region>\S{3})p006-(?P<rest>\S+)' = 'capi $region' # $rest'
+# '^(?P<region>\S{3})p005-(?P<rest>\S+)' = 'svc $region' # $rest'
+## lookaround not working in regex crate: https://github.com/rust-lang/regex/issues/127
+#'^(?P<tenant>\S{3}p(?!(c|005|006))\S{3})-cluster-admin' = ' ⚠️  $tenant'
+
+#'^(?P<region>\S{3})pc005-(?P<rest>\S+)' = '$region Nightly $rest'
+#'^(?P<region>[^.]{3}).*' = 'CAPI $region $rest '
+
+[custom.ostack]
+# ﳇ  率 歷   
+command = 'echo "\e[38;5;248m${OS_USERNAME#"LOCAL_u_"}" '
+symbol = ""
+when = """ ( test "$OS_USERNAME" != "" ) """
+format = '[>](fg:#505050) [$symbol]($style) $output '
+style = 'fg:1'
+disabled = false
+
+[custom.time]
+command = """echo $(date +'%H:%M:%S%P')"""
+disabled = false
+when = """ true """
+format = "[>](fg:#505050) [ $output]($style) "
+style = "fg:242"
+
+[time]
+disabled = false
+utc_time_offset = "0"
+time_format = "%I:%M:%S%P"
+format = '[\[$time UTC\]](fg:242) '
+
+[git_branch]
+style = 'fg:153'
+format = '[$symbol](fg:153)[$branch]($style) '
+symbol = ' '
+#   勞       
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = "🔖 "
+
+[git_status]
+style = 'fg:228'
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+format = '([$ahead_behind $conflicted$stashed$deleted$renamed$modified$staged$untracked]($style) )' 
+up_to_date = "[ ](fg:46)"
+stashed = "[ ](fg:14)"
+untracked = "[ﰂ ](fg:226)"
+modified = "[ ](fg:11)"
+deleted = "[ ](fg:1)"
+staged = "[ ](fg:13)"
+
+[golang]
+disabled = true
+format = "[via](fg:#505050) [$symbol($version)]($style) "
+symbol = ' '
+style = 'bold fg:6'
+
+[python]
+disabled = true
+
+[java]
+disabled = true
+
+[directory]
+truncate_to_repo = true
+truncation_length = 12
+# truncation_symbol = ".../"
+repo_root_style = "fg:153"
+repo_root_format = '[>](fg:#505050) [](fg:153) [$before_root_path]($style)[$repo_root]($repo_root_style)[ $path]($style)[$read_only]($read_only_style) [>](fg:#505050) '
+# repo_root_format = '[>](fg:#505050) [](fg:153) \[[$before_root_path]($style)[$repo_root]($repo_root_style)\][ $path]($style)[$read_only]($read_only_style) '
+style = "fg:248"
+read_only = ' '
+format = '[>](fg:#505050) [](fg:153)[  $path]($style)[$read_only]($read_only_style) '
+# format = '[>](fg:#505050) [פּ ](fg:153)[$path]($style)[$read_only]($read_only_style) '
+
+[cmd_duration]
+min_time = 1000
+show_milliseconds = false
+style = 'bold red'
+format = ' ⏳ [$duration]($style) '
+disabled = true
+
+[aws]
+symbol = "  "
+
+[custom.zsh]
+command = "echo 🚀"
+when = """ test "$STARSHIP_SHELL" "==" "zsh" """
+format = "$output"
+disabled = true
+
+[custom.bash]
+command = "echo  Bash Warning " 
+when = """ test "$STARSHIP_SHELL" "==" "bash" """
+format = "[$output]($style) "
+style = "bold red"
+disabled = false
+
+[custom.ctx]
+command = "echo $(kubectl config current-context |  cut -d'-' -f 1)"
+disabled = true
+when = """ true """
+format = "[$output]($style) "
+style = "bold green"
+
+[custom.beer]
+command = """echo It\\'s 🍺 time! """
+format = '[>](fg:#505050) [$output]($style) '
+style = " yellow"
+when = """ (( 14.2 <= $(date +'scale=1; %k + %M/60' | bc) && $(date +'scale=1; %k + %M/60' | bc) < 15 )) && test $(date "+%u") = 5  """
+
+[custom.lunch]
+command = 'echo Lunch 🍔 '
+format = '[>](fg:#505050) [$output]($style) '
+style = " yellow"
+when = """ (( 11.5 <= $(date +'scale=1; %k + %M/60' | bc) && $(date +'scale=1; %k + %M/60' | bc) < 13 )) """
+
+[custom.daily]
+command = "echo Daily 📆 "
+format = '[>](fg:#505050) [$output]($style) '
+style = " yellow"
+when = """ (( 11.0 <= $(date +'scale=1; %k + %M/60' | bc) && $(date +'scale=1; %k + %M/60' | bc) < 11.5 )) """
+
+[custom.git_remote_url]
+disabled = true
+description = 'Remote git repository'
+when = 'git rev-parse --is-inside-work-tree'
+command = """
+GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
+GIT_REMOTE_URL=$(echo $GIT_REMOTE | sed -E 's/^https?:\\/\\/(.+@)?//; s/\\.git$//;  s/\\.git$//; s/.+@(.+):([[:digit:]]+)\\/(.+)$/\\1\\/\\3/; s/.+@(.+):(.+)$/\\1\\/\\2/; s/\\/$//')
+if [[ "$GIT_REMOTE" =~ "github" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ -n "$GIT_REMOTE" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+else
+    GIT_REMOTE_SYMBOL=" "
+fi
+echo "$GIT_REMOTE_SYMBOL$GIT_REMOTE_URL"
+"""
+# Default format is according to the segmented-brackets preset (https://github.com/starship/starship/pull/2747)
+format = '\[[$output]($style)\] '
+# If you prefer the default Starship style, use the following
+# format = "at [$output]($style)"
+shell = ["bash", "--noprofile", "--norc"]
+style = 'blue'

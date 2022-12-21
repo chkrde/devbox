@@ -1,21 +1,53 @@
+// vim:ts=4:sw=4:et
 {
-   "border": "pixel",
-   "current_border_width": 4,
-   "floating": "auto_off",
-   "geometry": {
-      "height": 1576,
-      "width": 1272,
-      "x": 5772,
-      "y": 716
-   },
-   "marks": [],
-   "name": "Chrome",
-   "percent": 1,
-   "swallows": [
-      {
-      "class": "^Google\\-chrome$",
-      "instance": "^google\\-chrome$"
-      }
-   ],
-   "type": "con"
+    "border": "pixel",
+    "current_border_width": 5,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1040,
+       "width": 1902,
+       "x": 0,
+       "y": 0
+    },
+    "marks": [],
+    "name": "Mozilla Firefox",
+    "percent": 0.65,
+    "swallows": [
+       {
+         "class": "^firefox$",
+         "instance": "^Navigator$"
+       // "title": "^Team\\ KORE\\ \\—\\ Mozilla\\ Firefox$",
+       // "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
 }
+
+{
+    "border": "pixel",
+    "current_border_width": 5,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1040,
+       "width": 945,
+       "x": 9,
+       "y": 31
+    },
+    "marks": [],
+    "name": "(1) Meeting | Microsoft Teams - Google Chrome",
+    "percent": 0.35,
+    "swallows": [
+       {
+         // "class": "^Microsoft\\ Teams\\ \\-\\ Preview$",
+         "instance": "^google\\-chrome\\ \\(\\/home\\/kriegec\\/\\.config\\/google\\-chrome\\-teams\\)$"
+         // "class": "^Google\\-chrome$",
+         // "instance": "^google\\-chrome\\ \\(\\/home\\/kriegec\\/\\.config\\/google\\-chrome\\-teams\\)$"
+       // "class": "^Google\\-chrome$",
+       // "instance": "^google\\-chrome\\ \\(\\/home\\/kriegec\\/\\.config\\/google\\-chrome\\-teams\\)$",
+       // "title": "^\\(1\\)\\ Meeting\\ \\|\\ Microsoft\\ Teams\\ \\-\\ Google\\ Chrome$",
+       // "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+

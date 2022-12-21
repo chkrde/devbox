@@ -13,7 +13,6 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:monospace 8
 font pango:Hack, FontAwesome 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -32,25 +31,17 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
-#xterm #i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+#bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec rofi -show run -lines 12 -padding 18 -width 40 -location 0 -sidebar-mode -columns 2 -font 'Noto Sans 8'
-#bindsym $mod+d exec "rofi -modi combi,run,drun -show combi -combi-modi run,drun -lines 12 -padding 18 -width 40 -location 0 -columns 2 -font 'Noto Sans 8' -mesg "
-#bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
-bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-# bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
+##bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec i3-dmenu-desktop
 
-set $workspace1 "1:  "
-set $workspace2 "2:  "
-set $workspace3 "3:  "
+set $workspace1 "1: 1 "
+set $workspace2 "2: 2 "
+set $workspace3 "3: 3 "
 set $workspace4 "4: 4 "
 set $workspace5 "5: 5 "
 set $workspace6 "6: 6 "
@@ -59,6 +50,35 @@ set $workspace8 "8: 8 "
 set $workspace9 "9: 9 "
 set $workspace10 "10: 10 "
 
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# switch workspace to
+bindsym $mod+shift+m move workspace to output right
+bindsym $mod+shift+n move workspace to output left
+# bindsym $mod+m move workspace to output right
+# bindsym $mod+n move workspace to output left
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -86,7 +106,6 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#locked by mac
 #bindsym $mod+h split h
 bindsym $mod+b split h
 
@@ -113,35 +132,12 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch workspace to
-bindsym $mod+shift+m move workspace to output right
-bindsym $mod+shift+n move workspace to output left
-
-# switch to workspace
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
-bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace $workspace9
-bindsym $mod+0 workspace $workspace10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-bindsym $mod+Shift+0 move container to workspace $workspace10
-
 bindsym $mod+c exec copyq show
+
+#interactive screenshot by pressing printscreen
+bindsym Print exec gnome-screenshot -i 
+#crop-area screenshot by pressing Mod + printscreen
+bindsym $mod+Print exec gnome-screenshot -a
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -152,15 +148,13 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Lock screen with Mod+ALT+L
-bindsym $mod+mod1+l exec "i3lock-fancy -p -- scrot -z" 
+#bindsym $mod+mod1+l exec "i3lock-fancy -p -- scrot -z" 
+bindsym $mod+mod1+l exec "i3lock"
 
 # Mute default source with Mod+m
-#bindsym --release $mod+m exec xdotool search --name '.*Microsoft Teams - Google Chrome' windowactivate %@ key --window %@ ctrl+f12 windowactivate $(xdotool getactivewindow)
-bindsym $mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym $mod+o exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Pulse Audio controlsMaster
-#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
-#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -208,19 +202,15 @@ bar {
     i3bar_command i3bar
     #status_command exec ~/.local/bin/mybar
     status_command ~/.local/bin/i3status-rs ~/.config/i3status-rust/config.toml
-#    font pango:DejaVu Sans Mono, FontAwesome5Free 10
     font pango:DejaVu Sans Mono, FontAwesome 10
     #font pango:Hack Nerd Font Mono 9.9
     #font pango:FontAwesome 10
-    tray_output DP-1-2
+    tray_output DP-1-1-5
     tray_padding 4
     workspace_min_width 60
     strip_workspace_numbers yes
-#     height 20
-    # -t
     #status_command /sbin/i3blocks -c ~/.config/i3blocks/config
-#     status_command i3status
-    #separator_symbol ":|:"
+    #status_command i3status
     colors {
         background #303030
         statusline #ffffff
@@ -238,9 +228,7 @@ bar {
 # Colors
 # class              border  backgr. text    indicator child_border
 client.focused          #4c7899 #285577 #ffffff #5E81AC   #d26d26
-#client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.focused_inactive #333333 #5f676a #ffffff #285577   #285577
-#client.unfocused        #333333 #222222 #888888 #285577   #285577
 client.unfocused        #333333 #222222 #888888 #285577   #285577
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
@@ -248,13 +236,12 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 ### i3-gaps stuff ###
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 3
 #default_border pixel 1
 #default_floating_border pixel 1
 
 # Smart Gaps
 #smart_gaps on
-#de
 
 # Smart Borders
 #smart_borders on
@@ -303,10 +290,18 @@ mode "$mode_gaps_outer" {
 }
 
 # display and workspace  settings
-exec --no-startup-id xrandr --output DP-1-3 --mode 3840x2160 --rotate right --rate 30 --right-of DP-1-2 --scale 0.6x0.6
-workspace $workspace2 output primary
-workspace $workspace1 output DP-1-2
+# exec --no-startup-id xrandr --output DP-1-3 --mode 3840x2160 --rotate right --rate 30 --right-of DP-1-2 --scale 0.6x0.6
+exec --no-startup-id xrandr --output DP-1-2 --mode 3840x2160 --rate 30 --right-of DP-1-1-5 --scale 0.6x0.6
+# workspace $workspace2 output primary
+# workspace $workspace1 output DP-1-1-5
+# workspace $workspace3 output DP-1-3
+# workspace $workspace4 output primary
+workspace $workspace1 output DP-1-1-5
 workspace $workspace3 output DP-1-3
+workspace $workspace2 output primary
+workspace $workspace4 output primary
+workspace $workspace5 output DP-1-1-5
+workspace $workspace10 output primary
 
 # Set background
 #exec --no-startup-id xsetroot -solid "#000000"
@@ -317,28 +312,38 @@ exec --no-startup-id xsetroot -solid "#285577"
 # create with 
 # i3-save-tree --workspace $workspace1 > workspace-1.json
 # window information with xprop
-exec --no-startup-id i3-msg "workspace $workspace1; append_layout ~/.config/i3/workspace-1.json"
-exec --no-startup-id i3-msg "workspace $workspace2; append_layout ~/.config/i3/workspace-2.json"
-exec --no-startup-id i3-msg "workspace $workspace3; append_layout ~/.config/i3/workspace-3.json"
-
-exec xfce4-terminal --role=top
-exec xfce4-terminal --role=bottom
-exec --no-startup-id /home/kriegec/.local/bin/chrome-teams
-# exec_always echo "$(date)"  >> /home/kriegec/last
-
-# Default sound devices, find out with
-# pactl list short sinks
-# pactl list short sources
-exec --no-startup-id pactl set-default-sink alsa_output.usb-Synaptics_Targus_DOCK221_000000000000-00.analog-stereo
-exec --no-startup-id pactl set-default-sourrece alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7K0YVG15036EF-00.analog-stereo
+exec --no-startup-id i3-msg "workspace $workspace1; append_layout ~/.config/i3/test1.json"
+exec --no-startup-id i3-msg "workspace $workspace2; append_layout ~/.config/i3/test2.json"
+exec --no-startup-id i3-msg "workspace $workspace3; append_layout ~/.config/i3/test3.json"
+# exec --no-startup-id i3-msg "workspace $workspace4; append_layout ~/.config/i3/test4.json"
 
 # Stuff
 for_window [instance="^copyq$" class="^copyq$"] border pixel 1, floating enable
 exec --no-startup-id /usr/bin/copyq
-exec --no-startup-id /home/kriegec/.local/bin/streamdeck --no-ui
-for_window [instance="^Todour$" class="^Todour$"] border pixel 1, floating enable
-exec --no-startup-id /home/kriegec/.local/bin/Todour
 
-# Old
-#exec --no-startup-id i3-msg 'workspace 1:Web; exec /usr/bin/firefox
-#exec --no-startup-id VBoxClient --clipboard
+# for_window [instance="^Todour$" class="^Todour$"] border pixel 1, floating enable
+# exec --no-startup-id /home/kriegec/.local/bin/Todour
+
+exec --no-startup-id /home/kriegec/.local/bin/streamdeck --no-ui
+# exec --no-startup-id /home/kriegec/.local/bin/chrome-teams
+# exec --no-startup-id /usr/bin/teams
+
+# teams
+exec --no-startup-id /opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
+# outlook pwa
+exec --no-startup-id /opt/google/chrome/google-chrome --profile-directory=Default --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U
+
+# Default sound devices, find out with
+# pactl list short sinks
+# pactl list short sources
+exec --no-startup-id pactl set-default-sink alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_4_Dock_USB_Audio_000000000000-00.analog-stereo
+## might be one of the following sources
+# exec --no-startup-id pactl set-default-source alsa_input.usb-Behringer_UV1-00.stereo-fallback
+# exec --no-startup-id pactl set-default-source alsa_input.usb-Behringer_UV1-00.analog-stereo
+exec --no-startup-id pactl set-default-source $( pactl list sources short | grep input.usb-Behringer | awk '{print $2}' )
+# exec --no-startup-id pactl set-default-source alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7K0YVG15036EF-00.analog-stereo
+
+exec --no-startup-id setxkbmap eu
+
+exec --no-startup-id "sleep 1; xfce4-terminal"
+exec --no-startup-id "sleep 1; xfce4-terminal"
